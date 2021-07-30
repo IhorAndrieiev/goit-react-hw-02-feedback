@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import{Button} from './FeedbackOptions.styles'
+import { Container } from './FeedbackOptions.styles'
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
-  <>
+  <Container>
     {options.map(option => (
-      <button
+      <Button
         
         key={option}
         type="button"
@@ -12,9 +13,9 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
         onClick={onLeaveFeedback}
       >
         {option}
-      </button>
+      </Button>
     ))}
-  </>
+  </Container>
 );
 
 FeedbackOptions.propTypes = {

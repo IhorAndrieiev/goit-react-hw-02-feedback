@@ -53,8 +53,11 @@ export class Feedback extends Component {
     return good + neutral + bad;
   };
 render() {
-    const options = Object.keys(this.state);
+  const options = Object.keys(this.state);
+ 
     const { good, neutral, bad } = this.state;
+    const feedbacksTotal = this.countTotalFeedback();
+    const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
         return (
             <>
                 <Section title={"Please leave feedback"}>
@@ -74,15 +77,22 @@ render() {
                 /> */}
                 {/* <h2>Statistics</h2> */}
                 <Section title={"Statistics"}>
-                    {this.countTotalFeedback() ? (<Statistics
+                    {feedbacksTotal ? (<Statistics
                     good={good}
                     neutral={neutral}
                     bad={bad}
-                    total={ this.countTotalFeedback()}
-                    positivePercentage={this.countPositiveFeedbackPercentage()}
+                    total={ feedbacksTotal}
+                    positivePercentage={positiveFeedbackPercentage}
                     />):(
             <Notification message={"No feedback given"} />
           )}
+              {/* {feedbacksTotal&&(<Statistics
+                    good={good}
+                    neutral={neutral}
+                    bad={bad}
+                    total={ feedbacksTotal}
+                    positivePercentage={positiveFeedbackPercentage}
+                    />)} */}
                 </Section>
                 
             </>
